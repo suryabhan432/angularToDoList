@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row py-3 justify-content-center">
+        <div class="col-md-5 border mx-1">
+            <h1 class="text-success">User</h1>
+            <table class="table">
+                <thead>
+                    <tr class="table-dark">
+                        <th>Sr. No.</th>
+                        <th >User Name</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let pu of parentUser;index as i">
+                    <td>{{i+1}}</td>
+                    <td>{{pu.name}}</td>
+                    <td><button class="btn btn-danger bg-danger" (click)="onRemoveUser(i)">Remove</button></td>
+                </tr>
+                
+            </table>
+        </div>
+<!-- <div class="col-sm-1"></div> -->
+        <div class="col-md-5 border">
+            <h1 class="text-success">Admin</h1>
+            <table class="table">
+                <thead>
+                    <tr class="table-dark">
+                        <th>Sr. No.</th>
+                        <th >User Name</th>
+                        <th >Remove</th>
+                    </tr>
+                </thead>
+                    
+                        <tr *ngFor="let pa of parentAdmin;index as i">
+                        
+                            <td>{{i+1}}</td>
+                            <td>{{pa.name}}</td>
+                            <td><button class="btn btn-danger bg-danger" (click)="onRemoveAdmin(i)">Remove</button></td>
+                        </tr>
+               
+                
+            </table>
+        </div>
+
+    </div>
+<hr>
+
+    <div class="row">
+        <h1>Child Component</h1>
+        <hr style="border-top: dotted 3px #000000">
+        <div class="col-md-5 border p-3 bg-info">
+            <app-child
+            (childUser)="parentUserFun($event)" 
+            [totalNormalUser]="totalUserCount"
+            ></app-child>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-5 border p-3 bg-info">
+            <app-child2 
+            (childAdmin)="parentAdminfunc($event)"
+            [totalAdminUser]="totalAdminCount"
+            ></app-child2>
+        </div>
+    </div>
+
+</div>
+
